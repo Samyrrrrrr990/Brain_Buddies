@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brain Buddies — Expert Student Tutoring</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fafbff; --card:#ffffff; --text:#0b0f19; --muted:#5b6476;
+      --accent:#ff7a18; --accent-2:#ffb84d; --radius:20px;
+      --shadow:0 10px 24px rgba(16,24,40,.08);
+      --gradient:linear-gradient(180deg,#ffffff 0%,#f4f7ff 100%);
+      --pill-gradient:linear-gradient(135deg,var(--accent),var(--accent-2));
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%;height:auto}
+    .container{width:min(1080px,92vw);margin:auto}
+
+    /* NAVBAR */
+    .nav{position:sticky;top:0;background:#fff;backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.06);z-index:60}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:32px}
+    .nav-links{display:flex;gap:22px;align-items:center}
+    .nav-links a{color:#394150;font-weight:600}
+    .btn{padding:10px 18px;border-radius:999px;font-weight:700}
+    .btn.primary{background:var(--pill-gradient);color:#111}
+
+    /* MOBILE MENU */
+    .menu-btn{display:none;border:1px solid rgba(0,0,0,.08);background:#fff;padding:9px 12px;border-radius:12px;box-shadow:var(--shadow)}
+    .mobile-panel{position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:#fff;box-shadow:-12px 0 24px rgba(16,24,40,.14);transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column;z-index:70}
+    .mobile-panel header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(0,0,0,.06)}
+    .mobile-links{display:flex;flex-direction:column;padding:10px 16px;gap:10px}
+    .mobile-links a{padding:12px 10px;border-radius:12px;font-weight:700;color:#2a3240}
+    .mobile-links a:hover{background:#f5f7ff}
+    .mobile-panel .cta{margin:10px 16px 18px}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:65}
+    .mobile-open .mobile-panel{transform:translateX(0)}
+    .mobile-open .overlay{opacity:1;pointer-events:auto}
+
+    /* HERO */
+    .hero{background:var(--gradient);padding:86px 0 60px;text-align:center}
+    .hero h1{font-size:clamp(34px,5vw,52px);margin:0 0 12px;letter-spacing:-.3px}
+    .hero p{color:var(--muted);max-width:700px;margin:0 auto}
+    .hero .actions{margin-top:22px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+    section{padding:78px 0}
+    .section-header{text-align:center;margin-bottom:26px}
+    .section-header h2{font-size:clamp(26px,3vw,34px);margin:0 0 8px}
+    .section-header p{color:var(--muted)}
+
+    /* GRID UTIL */
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+
+    /* CARDS */
+    .card{background:var(--card);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .list{display:grid;gap:10px;margin:10px 0}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:8px}
+
+    /* HOW */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:left}
+    .step{padding:20px;border-radius:16px;background:#fff;border:1px solid rgba(16,24,40,.06);box-shadow:var(--shadow)}
+    .step h3{margin:8px 0 6px}
+
+    /* FEATURES */
+    .features .card{display:flex;gap:18px;align-items:flex-start}
+    .icon{min-width:36px;min-height:36px;border-radius:12px;background:rgba(255,122,24,.12);border:1px solid rgba(255,122,24,.35);display:grid;place-items:center;font-weight:900;color:#9a4f00}
+
+    /* PRICING */
+    .price{font-size:44px;font-weight:900;margin:6px 0}
+    .sub{color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#111;color:#fff;font-weight:800}
+    .guarantee{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px dashed rgba(255,122,24,.5);border-radius:14px;background:linear-gradient(180deg,#fff,#fff8ef)}
+
+    /* FAQ */
+    .faq{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+
+    /* CONTACT */
+    .contact-card{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+
+    /* FOOTER */
+    footer{text-align:center;padding:36px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,.05)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media (max-width:1060px){
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .faq{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:880px){
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    @media (max-width:720px){
+      .container{width:min(640px,92vw)}
+      .hero{padding:70px 0 48px}
+      .hero h1{font-size:clamp(28px,6vw,40px)}
+      .btn{width:100%;justify-content:center}
+      .grid-3{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      input,select,textarea{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Brain Buddies">
+        <img src="logo.png" alt="Brain Buddies logo" />
+      </a>
+      <div class="nav-links">
+        <a href="#how">How it Works</a>
+        <a href="#features">Why Us</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#apply">Become a Tutor</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#pricing">Book Now</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <header>
+      <div class="brand"><img src="logo.png" alt="Brain Buddies logo" /></div>
+      <button class="menu-btn" id="closeBtn" aria-label="Close menu">✕</button>
+    </header>
+    <nav class="mobile-links">
+      <a href="#how">How it Works</a>
+      <a href="#features">Why Us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#apply">Become a Tutor</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="cta">
+      <a class="btn primary" href="#pricing" style="display:block;text-align:center">Book Now</a>
+    </div>
+  </aside>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="container">
+      <h1 class="reveal">Smart Tutoring by High School Students</h1>
+      <p class="reveal" style="transition-delay:.05s">Premium help in Math & Science (Gr. 4–10) at just $15/hr. Aurora, ON • Money‑back guarantee.</p>
+      <div class="actions class-reveal" style="transition-delay:.1s">
+        <a class="btn primary" href="#pricing">Get Started</a>
+        <a class="btn" href="#how">How It Works</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Clear flow that respects parents’ time and helps students master the material.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>1) Tell us goals</h3><p>Share grade, course & upcoming tests. We align a plan in minutes.</p></div>
+        <div class="step reveal" style="transition-delay:.05s"><h3>2) Get matched</h3><p>High‑achieving local tutors trained to teach clearly and kindly.</p></div>
+        <div class="step reveal" style="transition-delay:.1s"><h3>3) Learn with structure</h3><p>Curriculum‑aligned lessons, drills, and notes after each session.</p></div>
+        <div class="step reveal" style="transition-delay:.15s"><h3>4) Track progress</h3><p>Weekly parent summaries & goal‑based practice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Parents Choose Brain Buddies</h2>
+        <p>Focused details without the clutter.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card features reveal">
+          <div class="icon">A</div>
+          <div>
+            <h3>Exam‑Smart Teaching</h3>
+            <ul class="list">
+              <li><span class="dot"></span> Step‑by‑step solutions & worked examples</li>
+              <li><span class="dot"></span> Study skills and test‑taking habits</li>
+              <li><span class="dot"></span> Aligned to Ontario curriculum</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card features reveal" style="transition-delay:.05s">
+          <div class="icon">$</div>
+          <div>
+            <h3>Affordable & Flexible</h3>
+            <ul class="list">
+              <li><span class="dot"></span> Simple $15/hr for any subject</li>
+              <li><span class="dot"></span> In‑person (Aurora) or online</li>
+              <li><span class="dot"></span> Pause or switch anytime</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card features reveal" style="transition-delay:.1s">
+          <div class="icon">✓</div>
+          <div>
+            <h3>Clear Parent Updates</h3>
+            <ul class="list">
+              <li><span class="dot"></span> Brief notes after sessions</li>
+              <li><span class="dot"></span> Goals for the week ahead</li>
+              <li><span class="dot"></span> Track improvement over time</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card features reveal" style="transition-delay:.15s">
+          <div class="icon">★</div>
+          <div>
+            <h3>Role‑Model Tutors</h3>
+            <ul class="list">
+              <li><span class="dot"></span> Kind, patient communicators</li>
+              <li><span class="dot"></span> High achievers from local schools</li>
+              <li><span class="dot"></span> Trained with lesson templates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING & GUARANTEE -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple Pricing</h2>
+        <p>One clear plan. No contracts.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <div class="pill">Standard • Any Subject</div>
+          <div class="price">$15 <small class="sub">CAD / hr</small></div>
+          <ul class="list">
+            <li><span class="dot"></span> 60‑minute 1‑on‑1 sessions</li>
+            <li><span class="dot"></span> Math & Science (Grades 4–10)</li>
+            <li><span class="dot"></span> Lesson notes & practice tasks</li>
+            <li><span class="dot"></span> Parent progress summaries</li>
+            <li><span class="dot"></span> In‑person (Aurora) or online</li>
+          </ul>
+          <div class="guarantee" id="guarantee">
+            <div class="icon" aria-hidden="true">✔</div>
+            <div><b>Money‑Back Guarantee.</b> Not happy after your first two sessions? We’ll refund you in full.</div>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="#contact">Book a Free Consult</a>
+            <a class="btn" href="#faq">See FAQ</a>
+          </div>
+        </div>
+        <div class="card reveal" style="transition-delay:.05s">
+          <h3>What parents notice</h3>
+          <ul class="list">
+            <li><span class="dot"></span> Clear, patient explanations</li>
+            <li><span class="dot"></span> Confidence and study habits</li>
+            <li><span class="dot"></span> Flexible scheduling</li>
+            <li><span class="dot"></span> Real exam prep—not busywork</li>
+            <li><span class="dot"></span> Affordable & local</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUTOR APPLY -->
+  <section id="apply">
+    <div class="container">
+      <div class="section-header">
+        <h2>High School Tutors — Earn Volunteer Hours</h2>
+        <p>Join Brain Buddies to mentor younger students, build your resume, and collect verified volunteer hours.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h3>Why join?</h3>
+          <ul class="list">
+            <li><span class="dot"></span> Verified volunteer hours (Aurora, ON)</li>
+            <li><span class="dot"></span> Teaching & leadership experience</li>
+            <li><span class="dot"></span> Training & ready‑made templates</li>
+            <li><span class="dot"></span> Flexible after‑school schedule</li>
+          </ul>
+        </div>
+        <div class="card reveal" style="transition-delay:.05s">
+          <h3>Apply Now</h3>
+          <form id="applyForm" novalidate>
+            <input id="fullName" name="fullName" placeholder="Full Name" required>
+            <input id="email" name="email" type="email" placeholder="Email" required>
+            <div class="grid grid-2">
+              <input id="phone" name="phone" placeholder="Phone">
+              <input id="school" name="school" placeholder="School">
+            </div>
+            <div class="grid grid-2">
+              <select id="grade" name="grade">
+                <option value="">Grade</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
+              </select>
+              <select id="hours" name="hours">
+                <option value="">Hours/week</option>
+                <option>1–2</option><option>3–5</option><option>6–8</option><option>9+</option>
+              </select>
+            </div>
+            <textarea id="about" name="about" placeholder="Why do you want to tutor? (grades, achievements, interests)"></textarea>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+              <button class="btn primary" type="submit">Submit Application</button>
+              <span class="sub">We’ll reply within 48 hours.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>FAQ</h2>
+        <p>Short, clear answers so you can decide quickly.</p>
+      </div>
+      <div class="faq">
+        <div class="card reveal"><h3>Who are the tutors?</h3><p>Top high school students in Aurora with training in how to teach clearly.</p></div>
+        <div class="card reveal" style="transition-delay:.05s"><h3>Where do sessions happen?</h3><p>In‑person at public spaces (libraries) or online via video—your choice.</p></div>
+        <div class="card reveal" style="transition-delay:.1s"><h3>Can we pause anytime?</h3><p>Yes. No contracts or minimums. You’re fully in control.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>Reach out and we’ll set up a short call to understand your goals and schedule the first session.</p>
+      </div>
+      <div class="contact-card">
+        <div class="card reveal"><h3>Aurora, Ontario</h3><p class="sub">Serving the Aurora community (in‑person & online).</p></div>
+        <div class="card reveal" style="transition-delay:.05s"><h3>Email</h3><p><a href="mailto:hello@brainbuddies.ca">hello@brainbuddies.ca</a></p></div>
+        <div class="card reveal" style="transition-delay:.1s"><h3>Phone</h3><p><a href="tel:+12895550134">
+          (289) 555‑0134</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Brain Buddies, Aurora ON</div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Reveal animations
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Mobile drawer behavior
+    const html = document.documentElement;
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const panel = document.getElementById('mobilePanel');
+    const overlay = document.getElementById('overlay');
+    function openMenu(){
+      html.classList.add('mobile-open');
+      panel.setAttribute('aria-hidden','false');
+      menuBtn.setAttribute('aria-expanded','true');
+      overlay.hidden=false;
+    }
+    function closeMenu(){
+      html.classList.remove('mobile-open');
+      panel.setAttribute('aria-hidden','true');
+      menuBtn.setAttribute('aria-expanded','false');
+      overlay.hidden=true;
+    }
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-links a').forEach(a=>a.addEventListener('click', closeMenu));
+
+    // Tutor form: basic validate + console log (no backend)
+    const form = document.getElementById('applyForm');
+    if(form){
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log('Tutor application →', data);
+        // FIX: use double quotes to avoid escaping issues in HTML/JS
+        alert("Thanks! Your application was received. We'll email you within 48 hours.");
+        form.reset();
+      });
+    }
+
+    // ------------------------------
+    // Smoke Tests (non-intrusive)
+    // ------------------------------
+    (function runSmokeTests(){
+      try{
+        console.group('Brain Buddies — Smoke Tests');
+        // Test 1: Elements exist
+        console.assert(!!document.getElementById('menuBtn'), 'Menu button missing');
+        console.assert(!!document.getElementById('mobilePanel'), 'Mobile panel missing');
+        console.assert(!!document.getElementById('overlay'), 'Overlay missing');
+        console.assert(!!document.getElementById('applyForm'), 'Apply form missing');
+
+        // Test 2: Menu open/close toggles classes & attributes
+        openMenu();
+        console.assert(document.documentElement.classList.contains('mobile-open'), 'Menu did not open');
+        console.assert(document.getElementById('overlay').hidden === false, 'Overlay not shown on open');
+        closeMenu();
+        console.assert(!document.documentElement.classList.contains('mobile-open'), 'Menu did not close');
+        console.assert(document.getElementById('overlay').hidden === true, 'Overlay not hidden on close');
+
+        // Test 3: Form handler runs (stub alert to avoid popup)
+        const _oldAlert = window.alert;
+        window.alert = (msg)=>console.info('ALERT (stubbed):', msg);
+        const testForm = document.getElementById('applyForm');
+        if(testForm){
+          const fd = new FormData();
+          fd.set('fullName','Test User');
+          fd.set('email','test@example.com');
+          // Populate the form elements to mimic user input
+          testForm.querySelector('#fullName').value = 'Test User';
+          testForm.querySelector('#email').value = 'test@example.com';
+          testForm.dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));
+        }
+        window.alert = _oldAlert;
+        console.groupEnd();
+      }catch(err){
+        console.error('Smoke tests failed:', err);
+      }
+    })();
+  </script>
+</body>
+</html>
