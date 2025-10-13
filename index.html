@@ -5,122 +5,835 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brain Buddies — Expert Student Tutoring</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&family=SF+Pro+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lel2uQrAAAAAICJEZd4GmUJfnFqT2B8PeXrJ7S8"></script>
   <style>
     :root{
-      --bg:#fafbff; --card:#ffffff; --text:#0b0f19; --muted:#5b6476;
-      --accent:#ff7a18; --accent-2:#ffb84d; --radius:20px;
-      --shadow:0 10px 24px rgba(16,24,40,.08);
-      --gradient:linear-gradient(180deg,#ffffff 0%,#f4f7ff 100%);
-      --pill-gradient:linear-gradient(135deg,var(--accent),var(--accent-2));
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --text-tertiary: #a1a1a6;
+      --accent: #007aff;
+      --accent-hover: #0051d5;
+      --success: #30d158;
+      --warning: #ff9f0a;
+      --error: #ff3b30;
+      --border: #d2d2d7;
+      --border-light: #f2f2f7;
+      --radius: 12px;
+      --radius-large: 20px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --nav-h: 44px;
+      --container-max: 1024px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a{text-decoration:none;color:inherit}
+    body{
+      margin:0;
+      font-family:'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.47059;
+      font-size:17px;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{text-decoration:none;color:inherit;transition:opacity 0.2s ease}
+    a:hover{opacity:0.7}
     img{display:block;max-width:100%;height:auto}
-    .container{width:min(1080px,92vw);margin:auto}
+    .container{width:min(var(--container-max), 92vw);margin:auto;padding:0 22px}
 
     /* NAVBAR */
-    .nav{position:sticky;top:0;background:#fff;backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.06);z-index:60}
-    .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand img{height:32px}
-    .nav-links{display:flex;gap:22px;align-items:center}
-    .nav-links a{color:#394150;font-weight:600}
-    .btn{padding:10px 18px;border-radius:999px;font-weight:700}
-    .btn.primary{background:var(--pill-gradient);color:#111}
+    .nav{
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(30px);
+      -webkit-backdrop-filter:blur(30px);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      z-index:60;
+      height:64px;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      height:100%;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight:600;
+      font-size:20px;
+      color:var(--text);
+      transition:opacity 0.2s ease;
+    }
+    .brand:hover{
+      opacity:0.8;
+    }
+    .brand img{
+      height:40px;
+      width:auto;
+      border-radius:8px;
+    }
+    .nav-links{
+      display:flex;
+      gap:40px;
+      align-items:center;
+      position:relative;
+    }
+    .nav-links a{
+      color:var(--text);
+      font-weight:400;
+      font-size:16px;
+      transition:all 0.2s ease;
+      position:relative;
+      padding:8px 0;
+    }
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width 0.3s ease;
+    }
+    .nav-links a:hover{
+      color:var(--accent);
+    }
+    .nav-links a:hover::after{
+      width:100%;
+    }
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .btn{
+      padding:10px 20px;
+      border-radius:20px;
+      font-weight:500;
+      font-size:15px;
+      transition:all 0.2s ease;
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 2px 8px rgba(0,122,255,0.2);
+    }
+    .btn:hover{
+      background:var(--accent-hover);
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(0,122,255,0.3);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+    .btn.secondary:hover{
+      background:var(--border-light);
+      color:var(--text);
+      transform:translateY(-1px);
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
 
     /* MOBILE MENU */
-    .menu-btn{display:none;border:1px solid rgba(0,0,0,.08);background:#fff;padding:9px 12px;border-radius:12px;box-shadow:var(--shadow)}
-    .mobile-panel{position:fixed;inset:0 0 0 auto;width:min(86vw,360px);background:#fff;box-shadow:-12px 0 24px rgba(16,24,40,.14);transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column;z-index:70}
-    .mobile-panel header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(0,0,0,.06)}
-    .mobile-links{display:flex;flex-direction:column;padding:10px 16px;gap:10px}
-    .mobile-links a{padding:12px 10px;border-radius:12px;font-weight:700;color:#2a3240}
-    .mobile-links a:hover{background:#f5f7ff}
-    .mobile-panel .cta{margin:10px 16px 18px}
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:65}
+    .menu-btn{
+      display:none;
+      background:transparent;
+      border:none;
+      padding:8px;
+      border-radius:var(--radius);
+      cursor:pointer;
+      font-size:17px;
+      color:var(--text);
+    }
+    .mobile-panel{
+      position:fixed;
+      inset:0 0 0 auto;
+      width:min(86vw,360px);
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      box-shadow:-12px 0 24px rgba(0,0,0,0.1);
+      transform:translateX(100%);
+      transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display:flex;
+      flex-direction:column;
+      z-index:70;
+    }
+    .mobile-panel header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 20px;
+      border-bottom:1px solid var(--border-light);
+    }
+    .mobile-links{
+      display:flex;
+      flex-direction:column;
+      padding:20px;
+      gap:4px;
+    }
+    .mobile-links a{
+      padding:12px 16px;
+      border-radius:var(--radius);
+      font-weight:400;
+      font-size:17px;
+      color:var(--text);
+      transition:background-color 0.2s ease;
+    }
+    .mobile-links a:hover{
+      background:var(--border-light);
+    }
+    .mobile-panel .cta{
+      margin:20px;
+    }
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.4);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.3s ease;
+      z-index:65;
+    }
     .mobile-open .mobile-panel{transform:translateX(0)}
     .mobile-open .overlay{opacity:1;pointer-events:auto}
 
     /* HERO */
-    .hero{background:var(--gradient);padding:86px 0 60px;text-align:center}
-    .hero h1{font-size:clamp(34px,5vw,52px);margin:0 0 12px;letter-spacing:-.3px}
-    .hero p{color:var(--muted);max-width:700px;margin:0 auto}
-    .hero .actions{margin-top:22px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .hero{
+      background:var(--bg);
+      padding:80px 0;
+      text-align:center;
+      min-height:calc(100vh - var(--nav-h));
+      display:flex;
+      align-items:center;
+      position:relative;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:800px;
+      margin:0 auto;
+    }
+    .hero h1{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:clamp(48px,8vw,80px);
+      font-weight:600;
+      line-height:1.05;
+      letter-spacing:-0.02em;
+      margin:0 0 24px;
+      color:var(--text);
+    }
+    .hero p{
+      color:var(--text-secondary);
+      max-width:600px;
+      margin:0 auto 40px;
+      font-size:21px;
+      line-height:1.381;
+      font-weight:400;
+    }
+    .hero .actions{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .hero .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 16px;
+      background:var(--border-light);
+      border-radius:980px;
+      color:var(--text-secondary);
+      font-weight:400;
+      font-size:17px;
+      margin-bottom:24px;
+      border:1px solid var(--border);
+    }
+    .hero .stats{
+      display:flex;
+      justify-content:center;
+      gap:60px;
+      margin-top:60px;
+      flex-wrap:wrap;
+    }
+    .hero .stat{
+      text-align:center;
+      color:var(--text-secondary);
+    }
+    .hero .stat-number{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:48px;
+      font-weight:600;
+      color:var(--text);
+      display:block;
+      line-height:1.1;
+    }
+    .hero .stat-label{
+      font-size:17px;
+      font-weight:400;
+      margin-top:4px;
+    }
 
-    section{padding:78px 0}
-    .section-header{text-align:center;margin-bottom:26px}
-    .section-header h2{font-size:clamp(26px,3vw,34px);margin:0 0 8px}
-    .section-header p{color:var(--muted)}
+    section{
+      padding:100px 0;
+      position:relative;
+    }
+    .section-header{
+      text-align:center;
+      margin-bottom:64px;
+      position:relative;
+    }
+    .section-header h2{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:clamp(40px,6vw,56px);
+      font-weight:600;
+      line-height:1.07;
+      letter-spacing:-0.02em;
+      margin:0 0 20px;
+      color:var(--text);
+    }
+    .section-header p{
+      color:var(--text-secondary);
+      font-size:21px;
+      max-width:600px;
+      margin:0 auto;
+      line-height:1.381;
+      font-weight:400;
+    }
 
     /* GRID UTIL */
-    .grid{display:grid;gap:18px}
+    .grid{display:grid;gap:24px}
     .grid-2{grid-template-columns:repeat(2,1fr)}
     .grid-3{grid-template-columns:repeat(3,1fr)}
 
     /* CARDS */
-    .card{background:var(--card);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .list{display:grid;gap:10px;margin:10px 0}
-    .list li{display:flex;gap:10px;align-items:flex-start}
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:8px}
+    .card{
+      background:var(--card);
+      padding:32px;
+      border-radius:var(--radius-large);
+      box-shadow:var(--shadow);
+      border:1px solid var(--border-light);
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card:hover{
+      box-shadow:var(--shadow-hover);
+      transform:translateY(-2px);
+    }
+    .list{
+      display:grid;
+      gap:16px;
+      margin:16px 0;
+    }
+    .list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      font-size:17px;
+      line-height:1.47059;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent);
+      margin-top:8px;
+      flex-shrink:0;
+    }
 
     /* HOW */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:left}
-    .step{padding:20px;border-radius:16px;background:#fff;border:1px solid rgba(16,24,40,.06);box-shadow:var(--shadow)}
-    .step h3{margin:8px 0 6px}
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:24px;
+      text-align:left;
+    }
+    .step{
+      padding:32px;
+      border-radius:var(--radius-large);
+      background:var(--card);
+      border:1px solid var(--border-light);
+      box-shadow:var(--shadow);
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .step:hover{
+      box-shadow:var(--shadow-hover);
+      transform:translateY(-2px);
+    }
+    .step h3{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:24px;
+      font-weight:600;
+      line-height:1.17;
+      letter-spacing:-0.01em;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .step p{
+      color:var(--text-secondary);
+      font-size:17px;
+      line-height:1.47059;
+      margin:0;
+    }
 
     /* FEATURES */
-    .features .card{display:flex;gap:18px;align-items:flex-start}
-    .icon{min-width:36px;min-height:36px;border-radius:12px;background:rgba(255,122,24,.12);border:1px solid rgba(255,122,24,.35);display:grid;place-items:center;font-weight:900;color:#9a4f00}
+    .features-section{
+      background:linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .features-section::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23007aff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+      opacity:0.3;
+      pointer-events:none;
+    }
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:40px;
+      position:relative;
+      z-index:2;
+    }
+    .feature-card{
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:20px;
+      padding:0;
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      display:flex;
+      flex-direction:column;
+      min-height:400px;
+    }
+    .feature-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    }
+    .feature-header{
+      padding:32px 32px 24px;
+      text-align:center;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    .feature-icon{
+      width:64px;
+      height:64px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--accent), #5ac8fa);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 20px;
+      box-shadow:0 6px 20px rgba(0,122,255,0.3);
+      position:relative;
+      overflow:hidden;
+    }
+    .feature-icon svg{
+      width:32px;
+      height:32px;
+      color:#fff;
+    }
+    .feature-title{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:22px;
+      font-weight:600;
+      line-height:1.2;
+      letter-spacing:-0.01em;
+      margin:0 0 12px;
+      color:var(--text);
+    }
+    .feature-description{
+      color:var(--text-secondary);
+      font-size:16px;
+      line-height:1.5;
+      margin:0;
+      text-align:center;
+    }
+    .feature-content{
+      padding:24px 32px 32px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .feature-list{
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .feature-list li{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+      color:var(--text-secondary);
+      font-size:15px;
+      line-height:1.4;
+      transition:all 0.2s ease;
+    }
+    .feature-list li:hover{
+      color:var(--text);
+    }
+    .feature-list li:last-child{
+      margin-bottom:0;
+    }
+    .feature-check{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--success);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:10px;
+      font-weight:600;
+      flex-shrink:0;
+      box-shadow:0 2px 6px rgba(48,209,88,0.3);
+    }
 
     /* PRICING */
-    .price{font-size:44px;font-weight:900;margin:6px 0}
-    .sub{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#111;color:#fff;font-weight:800}
-    .guarantee{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px dashed rgba(255,122,24,.5);border-radius:14px;background:linear-gradient(180deg,#fff,#fff8ef)}
+    .pricing-card{
+      position:relative;
+      overflow:hidden;
+    }
+    .price{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:56px;
+      font-weight:600;
+      line-height:1.07;
+      letter-spacing:-0.02em;
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .price-currency{
+      font-size:32px;
+      vertical-align:top;
+      margin-right:4px;
+    }
+    .price-period{
+      font-size:21px;
+      color:var(--text-secondary);
+      font-weight:400;
+    }
+    .sub{color:var(--text-secondary)}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 20px;
+      border-radius:980px;
+      background:var(--accent);
+      color:#fff;
+      font-weight:400;
+      font-size:17px;
+      margin-bottom:24px;
+    }
+    .guarantee{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      padding:24px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-large);
+      background:var(--border-light);
+      margin-top:32px;
+    }
+    .guarantee-icon{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      background:var(--success);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+      flex-shrink:0;
+    }
+    .pricing-features{
+      margin:32px 0;
+    }
+    .pricing-features li{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:16px;
+      color:var(--text);
+      font-size:17px;
+      line-height:1.47059;
+    }
+    .check-icon{
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      background:var(--success);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      flex-shrink:0;
+    }
 
     /* FAQ */
-    .faq{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+    .faq{
+      display:grid;
+      gap:24px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .faq .card{
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left:4px solid var(--accent);
+      padding:32px 28px;
+      text-align:left;
+    }
+    .faq .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+      border-left-color:var(--accent-hover);
+    }
+    .faq h3{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      color:var(--text);
+      font-size:20px;
+      font-weight:600;
+      line-height:1.2;
+      letter-spacing:-0.01em;
+      margin-bottom:16px;
+    }
+    .faq p{
+      color:var(--text-secondary);
+      font-size:16px;
+      line-height:1.5;
+      margin:0;
+    }
+
+    /* FORMS */
+    form{
+      display:grid;
+      gap:20px;
+    }
+    input,select,textarea{
+      width:100%;
+      padding:16px 20px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--text);
+      outline:none;
+      transition:all 0.2s ease;
+      font-size:17px;
+      font-family:inherit;
+    }
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    ::placeholder{
+      color:var(--text-tertiary);
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px rgba(0,122,255,0.1);
+    }
+    form .grid{
+      gap:20px;
+    }
+    form .sub{
+      color:var(--text-secondary);
+      font-size:17px;
+    }
 
     /* CONTACT */
-    .contact-card{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .contact-card{
+      display:grid;
+      gap:24px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .contact-card .card{
+      text-align:center;
+      padding:32px 24px;
+      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .contact-card .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+    }
+    .contact-card h3{
+      font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:24px;
+      font-weight:600;
+      line-height:1.17;
+      letter-spacing:-0.01em;
+      margin-bottom:12px;
+      color:var(--text);
+    }
+    .contact-card p{
+      color:var(--text-secondary);
+      font-size:17px;
+      line-height:1.47059;
+      margin:0;
+    }
+    .contact-card a{
+      color:var(--accent);
+      text-decoration:none;
+      transition:all 0.2s ease;
+      display:inline-block;
+      padding:8px 0;
+      border-radius:8px;
+    }
+    .contact-card a:hover{
+      opacity:0.7;
+      transform:scale(1.02);
+    }
 
     /* FOOTER */
-    footer{text-align:center;padding:36px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,.05)}
+    footer{
+      text-align:center;
+      padding:48px 0;
+      color:var(--text-secondary);
+      border-top:1px solid var(--border-light);
+      background:var(--card);
+    }
+    footer p{
+      font-size:17px;
+      line-height:1.47059;
+      margin:0;
+    }
 
     /* REVEAL */
-    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.show{opacity:1;transform:none}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    
+    /* FLOATING ANIMATION */
+    .float{animation:float 3s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    
+    /* PULSE ANIMATION */
+    .pulse{animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    
+    /* HOVER EFFECTS */
+    .hover-lift{transition:transform 0.3s ease, box-shadow 0.3s ease}
+    .hover-lift:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(16,24,40,.15)}
 
     /* RESPONSIVE */
-    @media (max-width:1060px){
+    @media (max-width:1024px){
       .grid-2{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr 1fr}
       .steps{grid-template-columns:repeat(2,1fr)}
-      .faq{grid-template-columns:1fr 1fr}
+      .faq{grid-template-columns:1fr 1fr;gap:20px}
+      .contact-card{grid-template-columns:1fr 1fr;gap:20px}
+      .contact-card .card{padding:28px 20px}
+      .faq .card{padding:28px 24px}
     }
-    @media (max-width:880px){
+    @media (max-width:768px){
       .nav-links{display:none}
+      .nav-actions .btn{display:none}
       .menu-btn{display:inline-flex}
-    }
-    @media (max-width:720px){
-      .container{width:min(640px,92vw)}
-      .hero{padding:70px 0 48px}
-      .hero h1{font-size:clamp(28px,6vw,40px)}
-      .btn{width:100%;justify-content:center}
-      .grid-3{grid-template-columns:1fr}
+      .nav-inner{padding:0 16px}
+      .brand span{display:none}
+      .brand img{height:32px;width:auto}
+      section{padding:80px 0}
+      .hero{padding:60px 0}
+      .hero h1{font-size:clamp(40px,8vw,56px)}
+      .hero p{font-size:19px}
+      .hero .stats{gap:40px;margin-top:48px}
+      .hero .stat-number{font-size:40px}
       .steps{grid-template-columns:1fr}
-      .faq{grid-template-columns:1fr}
-      input,select,textarea{font-size:16px}
+      .features-grid{grid-template-columns:1fr;gap:24px}
+      .feature-card{min-height:350px}
+      .feature-header{padding:24px 24px 20px}
+      .feature-content{padding:20px 24px 24px}
+      .feature-icon{width:56px;height:56px;margin:0 auto 16px}
+      .feature-icon svg{width:28px;height:28px}
+      .feature-title{font-size:20px;margin-bottom:8px}
+      .feature-description{font-size:15px}
+      .faq{grid-template-columns:1fr;gap:20px}
+      .contact-card{grid-template-columns:1fr;gap:20px}
+      .contact-card .card{padding:24px 20px}
+      .faq .card{padding:24px 20px}
+      .contact-card h3{font-size:20px}
+      .faq h3{font-size:18px}
+      .contact-card p{font-size:16px}
+      .faq p{font-size:15px}
     }
+    @media (max-width:480px){
+      .container{padding:0 12px}
+      .hero{padding:40px 0}
+      .hero h1{font-size:clamp(32px,8vw,48px)}
+      .hero p{font-size:17px}
+      .hero .actions{flex-direction:column;align-items:center}
+      .btn{width:100%;max-width:280px;justify-content:center;padding:12px 20px}
+      .grid-3{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      .contact-card{grid-template-columns:1fr}
+      .hero .stats{gap:32px;margin-top:40px}
+      .hero .stat-number{font-size:32px}
+      .section-header h2{font-size:clamp(32px,6vw,48px)}
+      .section-header p{font-size:19px}
+      .features-grid{grid-template-columns:1fr;gap:20px}
+      .feature-card{min-height:320px}
+      .feature-header{padding:20px 20px 16px}
+      .feature-content{padding:16px 20px 20px}
+      .feature-icon{width:48px;height:48px;margin:0 auto 12px}
+      .feature-icon svg{width:24px;height:24px}
+      .feature-title{font-size:18px;margin-bottom:6px}
+      .feature-description{font-size:14px}
+      .faq{grid-template-columns:1fr;gap:16px}
+      .contact-card{grid-template-columns:1fr;gap:16px}
+      .contact-card .card{padding:20px 16px}
+      .faq .card{padding:20px 16px}
+      .contact-card h3{font-size:18px;margin-bottom:8px}
+      .faq h3{font-size:16px;margin-bottom:12px}
+      .contact-card p{font-size:15px}
+      .faq p{font-size:14px;line-height:1.4}
+      .contact-card a{padding:6px 0;font-size:15px;min-height:44px;display:flex;align-items:center;justify-content:center}
+      .faq .card:hover{transform:none;box-shadow:var(--shadow)}
+      .contact-card .card:hover{transform:none;box-shadow:var(--shadow)}
+      input,select,textarea{font-size:16px;padding:14px 16px;min-height:44px}
+    }
+    .grecaptcha-badge { visibility: hidden; }
   </style>
 </head>
 <body>
   <!-- NAV -->
   <nav class="nav" aria-label="Primary">
-    <div class="container nav-inner">
+    <div class="nav-inner">
       <a class="brand" href="#top" aria-label="Brain Buddies">
-        <img src="logo.png" alt="Brain Buddies logo" />
+        <img src="Untitled design (14).png" alt="Brain Buddies logo" />
+        <span>Brain Buddies</span>
       </a>
       <div class="nav-links">
         <a href="#how">How it Works</a>
@@ -128,9 +841,11 @@
         <a href="#pricing">Pricing</a>
         <a href="#apply">Become a Tutor</a>
         <a href="#contact">Contact</a>
-        <a class="btn primary" href="#pricing">Book Now</a>
       </div>
-      <button class="menu-btn" id="menuBtn" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">☰</button>
+      <div class="nav-actions">
+        <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Now</a>
+        <button class="menu-btn" id="menuBtn" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">☰</button>
+      </div>
     </div>
   </nav>
 
@@ -156,11 +871,31 @@
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="container">
-      <h1 class="reveal">Smart Tutoring by High School Students</h1>
-      <p class="reveal" style="transition-delay:.05s">Premium help in Math & Science (Gr. 4–10) at just $15/hr. Aurora, ON • Money‑back guarantee.</p>
-      <div class="actions class-reveal" style="transition-delay:.1s">
-        <a class="btn primary" href="#pricing">Get Started</a>
-        <a class="btn" href="#how">How It Works</a>
+      <div class="hero-content">
+        <div class="badge reveal">
+          <span>⭐</span>
+          <span>Trusted by Aurora Families</span>
+        </div>
+        <h1 class="reveal">Transform Your Child's Learning with Top Student Tutors</h1>
+        <p class="reveal" style="transition-delay:.05s">Get personalized Math & Science tutoring from top-performing students. Proven results, flexible scheduling, and a money-back guarantee. Starting at just $20/hour.</p>
+        <div class="actions reveal" style="transition-delay:.1s">
+          <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Free Consultation</a>
+          <a class="btn secondary" href="#pricing">See How It Works</a>
+        </div>
+        <div class="stats reveal" style="transition-delay:.15s">
+          <div class="stat">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Student Tutors</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Grade Improvement</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">Student Rating</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -170,7 +905,7 @@
     <div class="container">
       <div class="section-header">
         <h2>How It Works</h2>
-        <p>Clear flow that respects parents’ time and helps students master the material.</p>
+        <p>Our proven 4-step process ensures your child gets the attention they need to succeed.</p>
       </div>
       <div class="steps">
         <div class="step reveal"><h3>1) Tell us goals</h3><p>Share grade, course & upcoming tests. We align a plan in minutes.</p></div>
@@ -182,54 +917,92 @@
   </section>
 
   <!-- FEATURES -->
-  <section id="features">
+  <section id="features" class="features-section">
     <div class="container">
       <div class="section-header">
         <h2>Why Parents Choose Brain Buddies</h2>
-        <p>Focused details without the clutter.</p>
+        <p>We combine the best of both worlds: expert knowledge from top students and the retention that comes from student-to-student learning.</p>
       </div>
-      <div class="grid grid-2">
-        <div class="card features reveal">
-          <div class="icon">A</div>
-          <div>
-            <h3>Exam‑Smart Teaching</h3>
-            <ul class="list">
-              <li><span class="dot"></span> Step‑by‑step solutions & worked examples</li>
-              <li><span class="dot"></span> Study skills and test‑taking habits</li>
-              <li><span class="dot"></span> Aligned to Ontario curriculum</li>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Exam‑Smart Teaching</h3>
+            <p class="feature-description">Structured approach that builds confidence and improves grades through proven methods.</p>
+          </div>
+          <div class="feature-content">
+            <ul class="feature-list">
+              <li><span class="feature-check">✓</span> Step‑by‑step solutions & worked examples</li>
+              <li><span class="feature-check">✓</span> Study skills and test‑taking habits</li>
+              <li><span class="feature-check">✓</span> Aligned to Ontario curriculum</li>
             </ul>
           </div>
         </div>
-        <div class="card features reveal" style="transition-delay:.05s">
-          <div class="icon">$</div>
-          <div>
-            <h3>Affordable & Flexible</h3>
-            <ul class="list">
-              <li><span class="dot"></span> Simple $15/hr for any subject</li>
-              <li><span class="dot"></span> In‑person (Aurora) or online</li>
-              <li><span class="dot"></span> Pause or switch anytime</li>
+        <div class="feature-card reveal" style="transition-delay:.1s">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8v8"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Affordable & Flexible</h3>
+            <p class="feature-description">Quality tutoring that fits your schedule and budget with no commitments.</p>
+          </div>
+          <div class="feature-content">
+            <ul class="feature-list">
+              <li><span class="feature-check">✓</span> Simple $20/hr for any subject</li>
+              <li><span class="feature-check">✓</span> In‑person (Aurora) or online</li>
+              <li><span class="feature-check">✓</span> Pause or switch anytime</li>
             </ul>
           </div>
         </div>
-        <div class="card features reveal" style="transition-delay:.1s">
-          <div class="icon">✓</div>
-          <div>
-            <h3>Clear Parent Updates</h3>
-            <ul class="list">
-              <li><span class="dot"></span> Brief notes after sessions</li>
-              <li><span class="dot"></span> Goals for the week ahead</li>
-              <li><span class="dot"></span> Track improvement over time</li>
+        <div class="feature-card reveal" style="transition-delay:.2s">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="M18 17V9"/>
+                <path d="M13 17V5"/>
+                <path d="M8 17v-3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Clear Parent Updates</h3>
+            <p class="feature-description">Stay informed about your child's progress with regular updates and insights.</p>
+          </div>
+          <div class="feature-content">
+            <ul class="feature-list">
+              <li><span class="feature-check">✓</span> Brief notes after sessions</li>
+              <li><span class="feature-check">✓</span> Goals for the week ahead</li>
+              <li><span class="feature-check">✓</span> Track improvement over time</li>
             </ul>
           </div>
         </div>
-        <div class="card features reveal" style="transition-delay:.15s">
-          <div class="icon">★</div>
-          <div>
-            <h3>Role‑Model Tutors</h3>
-            <ul class="list">
-              <li><span class="dot"></span> Kind, patient communicators</li>
-              <li><span class="dot"></span> High achievers from local schools</li>
-              <li><span class="dot"></span> Trained with lesson templates</li>
+        <div class="feature-card reveal" style="transition-delay:.3s">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M12 11v4"/>
+                <path d="M10 13h4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Role‑Model Tutors</h3>
+            <p class="feature-description">Learn from high-achieving students who understand the challenges and can relate.</p>
+          </div>
+          <div class="feature-content">
+            <ul class="feature-list">
+              <li><span class="feature-check">✓</span> Kind, patient communicators</li>
+              <li><span class="feature-check">✓</span> High achievers from local schools</li>
+              <li><span class="feature-check">✓</span> Trained with lesson templates</li>
             </ul>
           </div>
         </div>
@@ -241,38 +1014,44 @@
   <section id="pricing">
     <div class="container">
       <div class="section-header">
-        <h2>Simple Pricing</h2>
-        <p>One clear plan. No contracts.</p>
+        <h2>Simple, Transparent Pricing</h2>
+        <p>No hidden fees, no contracts, no surprises. Just quality tutoring at an affordable price.</p>
       </div>
       <div class="grid grid-2">
-        <div class="card reveal">
-          <div class="pill">Standard • Any Subject</div>
-          <div class="price">$15 <small class="sub">CAD / hr</small></div>
-          <ul class="list">
-            <li><span class="dot"></span> 60‑minute 1‑on‑1 sessions</li>
-            <li><span class="dot"></span> Math & Science (Grades 4–10)</li>
-            <li><span class="dot"></span> Lesson notes & practice tasks</li>
-            <li><span class="dot"></span> Parent progress summaries</li>
-            <li><span class="dot"></span> In‑person (Aurora) or online</li>
+        <div class="card pricing-card hover-lift reveal">
+          <div class="pill">🎓 Standard Plan • Any Subject</div>
+          <div class="price">
+            <span class="price-currency">$</span>20
+            <span class="price-period">CAD / hour</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✓</span> 60‑minute 1‑on‑1 sessions</li>
+            <li><span class="check-icon">✓</span> Math & Science (Grades 4–10)</li>
+            <li><span class="check-icon">✓</span> Lesson notes & practice tasks</li>
+            <li><span class="check-icon">✓</span> Parent progress summaries</li>
+            <li><span class="check-icon">✓</span> In‑person (Aurora) or online</li>
           </ul>
           <div class="guarantee" id="guarantee">
-            <div class="icon" aria-hidden="true">✔</div>
-            <div><b>Money‑Back Guarantee.</b> Not happy after your first two sessions? We’ll refund you in full.</div>
+            <div class="guarantee-icon">✓</div>
+            <div><strong>Money‑Back Guarantee.</strong> Not happy after your first month? We'll refund you in full.</div>
           </div>
-          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" href="#contact">Book a Free Consult</a>
-            <a class="btn" href="#faq">See FAQ</a>
+          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Free Consultation</a>
+            <a class="btn secondary" href="#faq">See FAQ</a>
           </div>
         </div>
         <div class="card reveal" style="transition-delay:.05s">
-          <h3>What parents notice</h3>
-          <ul class="list">
-            <li><span class="dot"></span> Clear, patient explanations</li>
-            <li><span class="dot"></span> Confidence and study habits</li>
-            <li><span class="dot"></span> Flexible scheduling</li>
-            <li><span class="dot"></span> Real exam prep—not busywork</li>
-            <li><span class="dot"></span> Affordable & local</li>
+          <h3 style="font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;font-size:24px;font-weight:600;line-height:1.17;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text)">What Parents Notice</h3>
+          <ul class="feature-list">
+            <li><span class="feature-dot"></span> Clear, patient explanations</li>
+            <li><span class="feature-dot"></span> Confidence and study habits</li>
+            <li><span class="feature-dot"></span> Flexible scheduling</li>
+            <li><span class="feature-dot"></span> Real exam prep—not busywork</li>
+            <li><span class="feature-dot"></span> Affordable & local</li>
           </ul>
+          <div style="margin-top:24px;padding:20px;background:var(--border-light);border-radius:var(--radius);border-left:4px solid var(--accent)">
+            <p style="margin:0;font-style:italic;color:var(--text-secondary);font-size:17px;line-height:1.47059">"My math grade improved from 82% to 98%" - Highschool Student, Aurora</p>
+          </div>
         </div>
       </div>
     </div>
@@ -297,7 +1076,8 @@
         </div>
         <div class="card reveal" style="transition-delay:.05s">
           <h3>Apply Now</h3>
-          <form id="applyForm" novalidate>
+          <form id="applyForm" action="https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec" method="post">
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
             <input id="fullName" name="fullName" placeholder="Full Name" required>
             <input id="email" name="email" type="email" placeholder="Email" required>
             <div class="grid grid-2">
@@ -358,9 +1138,15 @@
 
   <footer>
     <div class="container">© <span id="year"></span> Brain Buddies, Aurora ON</div>
+    <p style="font-size:12px; color:#aaa; margin-top:8px">
+      This site is protected by reCAPTCHA and the Google
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:#888">Privacy Policy</a> and
+      <a href="https://policies.google.com/terms" target="_blank" rel="noopener" style="color:#888">Terms of Service</a> apply.
+    </p>
   </footer>
 
   <script>
+    const allowed = ['https://brainbuddies.ca', 'https://<your-gh-pages>.github.io'];
     // Footer year
     document.getElementById('year').textContent=new Date().getFullYear();
 
@@ -395,21 +1181,40 @@
 
     // Tutor form: basic validate + console log (no backend)
     const form = document.getElementById('applyForm');
-    if(form){
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form).entries());
-        console.log('Tutor application →', data);
-        // FIX: use double quotes to avoid escaping issues in HTML/JS
-        alert("Thanks! Your application was received. We'll email you within 48 hours.");
-        form.reset();
-      });
-    }
+    form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    // ------------------------------
+  const btn = form.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+  try {
+    const fd = new FormData(form);
+
+    await new Promise(resolve => grecaptcha.ready(resolve));
+    const token = await grecaptcha.execute('6Lel2uQrAAAAAICJEZd4GmUJfnFqT2B8PeXrJ7S8', { action: 'apply' });
+    fd.append('token', token);
+
+    // Keep no-cors, do NOT inspect the response (it's opaque).
+    await fetch('https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec', {
+      method: 'POST',
+      body: fd,
+      mode: 'no-cors'
+    });
+
+    // Single success path
+    alert("Thanks! Your application was received. We'll email you within 48 hours.");
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    alert('Sorry, there was an error. Please try again.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit Application'; }
+  }
+});
     // Smoke Tests (non-intrusive)
     // ------------------------------
-    (function runSmokeTests(){
+    if (location.hostname === 'localhost') {
+  (function runSmokeTests(){ 
       try{
         console.group('Brain Buddies — Smoke Tests');
         // Test 1: Elements exist
@@ -445,6 +1250,7 @@
         console.error('Smoke tests failed:', err);
       }
     })();
+}
   </script>
 </body>
 </html>
