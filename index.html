@@ -3,10 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brain Buddies — Expert Student Tutoring</title>
+
+  <title>Math & Science Tutoring in Aurora, Ontario | Brain Buddies</title>
+
+  <meta name="description" content="Brain Buddies offers affordable $20/hour math and science tutoring in Aurora, Ontario. Top student tutors for Grades 4–10, flexible scheduling, and a money-back guarantee." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://brainbuddies.ca/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Math & Science Tutoring in Aurora, Ontario | Brain Buddies" />
+  <meta property="og:description" content="Student-led math and science tutoring for Grades 4–10 in Aurora, Ontario. $20/hour, in-person or online, with a money-back guarantee." />
+  <meta property="og:url" content="https://brainbuddies.ca/" />
+  <meta property="og:image" content="https://brainbuddies.ca/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Math & Science Tutoring in Aurora, Ontario | Brain Buddies" />
+  <meta name="twitter:description" content="Affordable $20/hour tutoring from top student tutors in Aurora, ON. Math & science help for Grades 4–10." />
+  <meta name="twitter:image" content="https://brainbuddies.ca/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800;900&family=SF+Pro+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="Untitled design (14).png">
   <script src="https://www.google.com/recaptcha/api.js?render=6Lel2uQrAAAAAICJEZd4GmUJfnFqT2B8PeXrJ7S8"></script>
+
+  <!-- Local business / tutoring org schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Brain Buddies",
+    "url": "https://brainbuddies.ca/",
+    "logo": "https://brainbuddies.ca/Untitled%20design%20(14).png",
+    "description": "Student-led tutoring service offering affordable math and science tutoring for Grades 4–10 in Aurora, Ontario.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Aurora",
+      "addressRegion": "ON",
+      "addressCountry": "CA"
+    },
+    "telephone": "+1-416-875-2746",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who are the tutors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our tutors are top high school students in Aurora with strong grades in math and science and training in how to teach clearly and patiently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do sessions happen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tutoring sessions happen in-person at public spaces such as Aurora libraries or online via video, depending on your preference."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we pause anytime?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. There are no contracts or minimums. You can pause or adjust Brain Buddies tutoring at any time."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --bg: #f5f5f7;
@@ -25,7 +100,7 @@
       --radius-large: 20px;
       --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-      --nav-h: 44px;
+      --nav-h: 64px;
       --container-max: 1024px;
     }
     *{box-sizing:border-box}
@@ -40,7 +115,7 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
-    a{text-decoration:none;color:inherit;transition:opacity 0.2s ease}
+    a{text-decoration:none;color:inherit;transition:opacity 0.2s ease, color 0.2s ease}
     a:hover{opacity:0.7}
     img{display:block;max-width:100%;height:auto}
     .container{width:min(var(--container-max), 92vw);margin:auto;padding:0 22px}
@@ -54,7 +129,12 @@
       -webkit-backdrop-filter:blur(30px);
       border-bottom:1px solid rgba(0,0,0,0.05);
       z-index:60;
-      height:64px;
+      height:var(--nav-h);
+    }
+    .nav-scrolled{
+      background:rgba(255,255,255,0.96);
+      box-shadow:0 1px 8px rgba(0,0,0,0.06);
+      border-bottom-color:rgba(210,210,215,0.8);
     }
     .nav-inner{
       display:flex;
@@ -64,6 +144,7 @@
       max-width:1200px;
       margin:0 auto;
       padding:0 24px;
+      gap:18px;
     }
     .brand{
       display:flex;
@@ -74,6 +155,7 @@
       font-size:20px;
       color:var(--text);
       transition:opacity 0.2s ease;
+      white-space:nowrap;
     }
     .brand:hover{
       opacity:0.8;
@@ -113,46 +195,17 @@
     .nav-links a:hover::after{
       width:100%;
     }
+    .nav-links a.active{
+      color:var(--accent);
+    }
     .nav-actions{
       display:flex;
       align-items:center;
       gap:16px;
-    }
-    .btn{
-      padding:10px 20px;
-      border-radius:20px;
-      font-weight:500;
-      font-size:15px;
-      transition:all 0.2s ease;
-      border:none;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      text-decoration:none;
-      background:var(--accent);
-      color:#fff;
-      box-shadow:0 2px 8px rgba(0,122,255,0.2);
-    }
-    .btn:hover{
-      background:var(--accent-hover);
-      transform:translateY(-1px);
-      box-shadow:0 4px 12px rgba(0,122,255,0.3);
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--text);
-      border:1px solid var(--border);
-      box-shadow:none;
-    }
-    .btn.secondary:hover{
-      background:var(--border-light);
-      color:var(--text);
-      transform:translateY(-1px);
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      white-space:nowrap;
     }
 
-    /* MOBILE MENU */
+    /* MOBILE MENU BUTTON */
     .menu-btn{
       display:none;
       background:transparent;
@@ -163,6 +216,11 @@
       font-size:17px;
       color:var(--text);
     }
+    .menu-btn:hover{
+      background:rgba(0,0,0,0.05);
+    }
+
+    /* MOBILE PANEL */
     .mobile-panel{
       position:fixed;
       inset:0 0 0 auto;
@@ -215,6 +273,41 @@
     }
     .mobile-open .mobile-panel{transform:translateX(0)}
     .mobile-open .overlay{opacity:1;pointer-events:auto}
+
+    /* BUTTONS GENERAL */
+    .btn{
+      padding:10px 20px;
+      border-radius:20px;
+      font-weight:500;
+      font-size:15px;
+      transition:all 0.2s ease;
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 2px 8px rgba(0,122,255,0.25);
+    }
+    .btn:hover{
+      background:var(--accent-hover);
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(0,122,255,0.35);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow:none;
+    }
+    .btn.secondary:hover{
+      background:var(--border-light);
+      color:var(--text);
+      transform:translateY(-1px);
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
 
     /* HERO */
     .hero{
@@ -721,7 +814,7 @@
     /* FOOTER */
     footer{
       text-align:center;
-      padding:48px 0;
+      padding:48px 0 32px;
       color:var(--text-secondary);
       border-top:1px solid var(--border-light);
       background:var(--card);
@@ -757,12 +850,12 @@
       .contact-card{grid-template-columns:1fr 1fr;gap:20px}
       .contact-card .card{padding:28px 20px}
       .faq .card{padding:28px 24px}
+      .nav-inner{padding:0 16px}
     }
     @media (max-width:768px){
       .nav-links{display:none}
       .nav-actions .btn{display:none}
       .menu-btn{display:inline-flex}
-      .nav-inner{padding:0 16px}
       .brand span{display:none}
       .brand img{height:32px;width:auto}
       section{padding:80px 0}
@@ -831,19 +924,19 @@
   <!-- NAV -->
   <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Brain Buddies">
-        <img src="Untitled design (14).png" alt="Brain Buddies logo" />
+      <a class="brand" href="#top" aria-label="Brain Buddies tutoring in Aurora Ontario">
+        <img src="Untitled design (14).png" alt="Brain Buddies tutoring logo in Aurora Ontario" />
         <span>Brain Buddies</span>
       </a>
       <div class="nav-links">
-        <a href="#how">How it Works</a>
+        <a href="#how">How It Works</a>
         <a href="#features">Why Us</a>
         <a href="#pricing">Pricing</a>
         <a href="#apply">Become a Tutor</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-actions">
-        <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Now</a>
+        <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank" rel="noopener">Book Now</a>
         <button class="menu-btn" id="menuBtn" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">☰</button>
       </div>
     </div>
@@ -853,11 +946,13 @@
   <div class="overlay" id="overlay" hidden></div>
   <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
     <header>
-      <div class="brand"><img src="logo.png" alt="Brain Buddies logo" /></div>
+      <div class="brand">
+        <img src="Untitled design (14).png" alt="Brain Buddies tutoring logo in Aurora Ontario" />
+      </div>
       <button class="menu-btn" id="closeBtn" aria-label="Close menu">✕</button>
     </header>
     <nav class="mobile-links">
-      <a href="#how">How it Works</a>
+      <a href="#how">How It Works</a>
       <a href="#features">Why Us</a>
       <a href="#pricing">Pricing</a>
       <a href="#apply">Become a Tutor</a>
@@ -868,273 +963,309 @@
     </div>
   </aside>
 
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="container">
-      <div class="hero-content">
-        <div class="badge reveal">
-          <span>⭐</span>
-          <span>Trusted by Aurora Families</span>
-        </div>
-        <h1 class="reveal">Transform Your Child's Learning with Top Student Tutors</h1>
-        <p class="reveal" style="transition-delay:.05s">Get personalized Math & Science tutoring from top-performing students. Proven results, flexible scheduling, and a money-back guarantee. Starting at just $20/hour.</p>
-        <div class="actions reveal" style="transition-delay:.1s">
-          <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Free Consultation</a>
-          <a class="btn secondary" href="#pricing">See How It Works</a>
-        </div>
-        <div class="stats reveal" style="transition-delay:.15s">
-          <div class="stat">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Student Tutors</span>
+  <main>
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge reveal">
+            <span>⭐</span>
+            <span>Trusted by Aurora Families</span>
           </div>
-          <div class="stat">
-            <span class="stat-number">95%</span>
-            <span class="stat-label">Grade Improvement</span>
+          <h1 class="reveal">Math & Science Tutoring in Aurora, Ontario</h1>
+          <p class="reveal" style="transition-delay:.05s">
+            Get personalized math and science tutoring in Aurora, ON from top-performing student tutors.
+            Proven results for Grades 4–10, flexible scheduling, and a money-back guarantee. Starting at just $20/hour.
+          </p>
+          <div class="actions reveal" style="transition-delay:.1s">
+            <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank" rel="noopener">Book Free Consultation</a>
+            <a class="btn secondary" href="#pricing">See How It Works</a>
           </div>
-          <div class="stat">
-            <span class="stat-number">4.9★</span>
-            <span class="stat-label">Student Rating</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="container">
-      <div class="section-header">
-        <h2>How It Works</h2>
-        <p>Our proven 4-step process ensures your child gets the attention they need to succeed.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><h3>1) Tell us goals</h3><p>Share grade, course & upcoming tests. We align a plan in minutes.</p></div>
-        <div class="step reveal" style="transition-delay:.05s"><h3>2) Get matched</h3><p>High‑achieving local tutors trained to teach clearly and kindly.</p></div>
-        <div class="step reveal" style="transition-delay:.1s"><h3>3) Learn with structure</h3><p>Curriculum‑aligned lessons, drills, and notes after each session.</p></div>
-        <div class="step reveal" style="transition-delay:.15s"><h3>4) Track progress</h3><p>Weekly parent summaries & goal‑based practice.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" class="features-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Why Parents Choose Brain Buddies</h2>
-        <p>We combine the best of both worlds: expert knowledge from top students and the retention that comes from student-to-student learning.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-header">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="12" cy="12" r="6"/>
-                <circle cx="12" cy="12" r="2"/>
-              </svg>
+          <div class="stats reveal" style="transition-delay:.15s">
+            <div class="stat">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Student Tutors</span>
             </div>
-            <h3 class="feature-title">Exam‑Smart Teaching</h3>
-            <p class="feature-description">Structured approach that builds confidence and improves grades through proven methods.</p>
+            <div class="stat">
+              <span class="stat-number">95%</span>
+              <span class="stat-label">Grade Improvement</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">4.9★</span>
+              <span class="stat-label">Student Rating</span>
+            </div>
           </div>
-          <div class="feature-content">
+        </div>
+      </div>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="container">
+        <div class="section-header">
+          <h2>How Tutoring Works</h2>
+          <p>Our proven 4-step process helps Aurora students in Grades 4–10 get the focused math and science support they need to succeed.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>1) Tell us goals</h3>
+            <p>Share your child’s grade, course, and upcoming tests. We align a tutoring plan in minutes.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.05s">
+            <h3>2) Get matched</h3>
+            <p>High-achieving local student tutors trained to teach clearly, kindly, and at your child’s pace.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.1s">
+            <h3>3) Learn with structure</h3>
+            <p>Ontario curriculum-aligned lessons, drills, and notes after each session so learning sticks.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.15s">
+            <h3>4) Track progress</h3>
+            <p>Weekly parent summaries and goal-based practice so you can see real improvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Parents Choose Brain Buddies</h2>
+          <p>We combine expert subject knowledge from top students with the comfort of student-to-student learning.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-header">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Exam-Smart Teaching</h3>
+              <p class="feature-description">Structured math and science tutoring that builds confidence and improves grades.</p>
+            </div>
+            <div class="feature-content">
+              <ul class="feature-list">
+                <li><span class="feature-check">✓</span> Step-by-step solutions and worked examples</li>
+                <li><span class="feature-check">✓</span> Study skills and test-taking habits</li>
+                <li><span class="feature-check">✓</span> Aligned to the Ontario curriculum</li>
+              </ul>
+            </div>
+          </div>
+          <div class="feature-card reveal" style="transition-delay:.1s">
+            <div class="feature-header">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8 12h8"/>
+                  <path d="M12 8v8"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Affordable & Flexible</h3>
+              <p class="feature-description">Quality tutoring in Aurora that fits your schedule and budget with no contracts.</p>
+            </div>
+            <div class="feature-content">
+              <ul class="feature-list">
+                <li><span class="feature-check">✓</span> Simple $20/hour for any subject</li>
+                <li><span class="feature-check">✓</span> In-person (Aurora) or online sessions</li>
+                <li><span class="feature-check">✓</span> Pause or switch tutors anytime</li>
+              </ul>
+            </div>
+          </div>
+          <div class="feature-card reveal" style="transition-delay:.2s">
+            <div class="feature-header">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3v18h18"/>
+                  <path d="M18 17V9"/>
+                  <path d="M13 17V5"/>
+                  <path d="M8 17v-3"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Clear Parent Updates</h3>
+              <p class="feature-description">Stay informed about your child’s Aurora tutoring progress with regular updates.</p>
+            </div>
+            <div class="feature-content">
+              <ul class="feature-list">
+                <li><span class="feature-check">✓</span> Brief notes after each session</li>
+                <li><span class="feature-check">✓</span> Goals for the week ahead</li>
+                <li><span class="feature-check">✓</span> Track improvement over time</li>
+              </ul>
+            </div>
+          </div>
+          <div class="feature-card reveal" style="transition-delay:.3s">
+            <div class="feature-header">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                  <path d="M12 11v4"/>
+                  <path d="M10 13h4"/>
+                </svg>
+              </div>
+              <h3 class="feature-title">Role-Model Tutors</h3>
+              <p class="feature-description">Learn from high-achieving student tutors who understand school life right now.</p>
+            </div>
+            <div class="feature-content">
+              <ul class="feature-list">
+                <li><span class="feature-check">✓</span> Kind, patient communicators</li>
+                <li><span class="feature-check">✓</span> High achievers from local Aurora schools</li>
+                <li><span class="feature-check">✓</span> Trained with lesson templates and support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING & GUARANTEE -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple, Transparent Pricing</h2>
+          <p>No hidden fees, no contracts, no surprises. Just quality one-on-one tutoring at an affordable price.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card pricing-card hover-lift reveal">
+            <div class="pill">🎓 Standard Plan • Any Subject</div>
+            <div class="price">
+              <span class="price-currency">$</span>20
+              <span class="price-period">CAD / hour</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check-icon">✓</span> 60-minute 1-on-1 tutoring sessions</li>
+              <li><span class="check-icon">✓</span> Math & Science (Grades 4–10)</li>
+              <li><span class="check-icon">✓</span> Lesson notes and practice tasks</li>
+              <li><span class="check-icon">✓</span> Parent progress summaries</li>
+              <li><span class="check-icon">✓</span> In-person (Aurora) or online</li>
+            </ul>
+            <div class="guarantee" id="guarantee">
+              <div class="guarantee-icon">✓</div>
+              <div><strong>Money-Back Guarantee.</strong> Not happy after your first month of Brain Buddies tutoring? We’ll refund you in full.</div>
+            </div>
+            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+              <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank" rel="noopener">Book Free Consultation</a>
+              <a class="btn secondary" href="#faq">See FAQ</a>
+            </div>
+          </div>
+          <div class="card reveal" style="transition-delay:.05s">
+            <h3 style="font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;font-size:24px;font-weight:600;line-height:1.17;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text)">What Parents Notice</h3>
             <ul class="feature-list">
-              <li><span class="feature-check">✓</span> Step‑by‑step solutions & worked examples</li>
-              <li><span class="feature-check">✓</span> Study skills and test‑taking habits</li>
-              <li><span class="feature-check">✓</span> Aligned to Ontario curriculum</li>
+              <li><span class="feature-dot"></span> Clear, patient explanations</li>
+              <li><span class="feature-dot"></span> Confidence and better study habits</li>
+              <li><span class="feature-dot"></span> Flexible scheduling around busy families</li>
+              <li><span class="feature-dot"></span> Real exam prep—not busywork</li>
+              <li><span class="feature-dot"></span> Affordable and local to Aurora</li>
+            </ul>
+            <div style="margin-top:24px;padding:20px;background:var(--border-light);border-radius:var(--radius);border-left:4px solid var(--accent)">
+              <p style="margin:0;font-style:italic;color:var(--text-secondary);font-size:17px;line-height:1.47059">
+                "My math grade improved from 82% to 98%" – High school student, Aurora
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TUTOR APPLY -->
+    <section id="apply">
+      <div class="container">
+        <div class="section-header">
+          <h2>High School Tutors — Earn Volunteer Hours</h2>
+          <p>Join Brain Buddies to mentor younger students, build your resume, and collect verified volunteer hours in Aurora, Ontario.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <h3>Why join?</h3>
+            <ul class="list">
+              <li><span class="dot"></span> Verified volunteer hours (Aurora, ON)</li>
+              <li><span class="dot"></span> Teaching and leadership experience</li>
+              <li><span class="dot"></span> Training and ready-made lesson templates</li>
+              <li><span class="dot"></span> Flexible after-school schedule</li>
             </ul>
           </div>
-        </div>
-        <div class="feature-card reveal" style="transition-delay:.1s">
-          <div class="feature-header">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 12h8"/>
-                <path d="M12 8v8"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Affordable & Flexible</h3>
-            <p class="feature-description">Quality tutoring that fits your schedule and budget with no commitments.</p>
-          </div>
-          <div class="feature-content">
-            <ul class="feature-list">
-              <li><span class="feature-check">✓</span> Simple $20/hr for any subject</li>
-              <li><span class="feature-check">✓</span> In‑person (Aurora) or online</li>
-              <li><span class="feature-check">✓</span> Pause or switch anytime</li>
-            </ul>
-          </div>
-        </div>
-        <div class="feature-card reveal" style="transition-delay:.2s">
-          <div class="feature-header">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v18h18"/>
-                <path d="M18 17V9"/>
-                <path d="M13 17V5"/>
-                <path d="M8 17v-3"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Clear Parent Updates</h3>
-            <p class="feature-description">Stay informed about your child's progress with regular updates and insights.</p>
-          </div>
-          <div class="feature-content">
-            <ul class="feature-list">
-              <li><span class="feature-check">✓</span> Brief notes after sessions</li>
-              <li><span class="feature-check">✓</span> Goals for the week ahead</li>
-              <li><span class="feature-check">✓</span> Track improvement over time</li>
-            </ul>
-          </div>
-        </div>
-        <div class="feature-card reveal" style="transition-delay:.3s">
-          <div class="feature-header">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M12 11v4"/>
-                <path d="M10 13h4"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Role‑Model Tutors</h3>
-            <p class="feature-description">Learn from high-achieving students who understand the challenges and can relate.</p>
-          </div>
-          <div class="feature-content">
-            <ul class="feature-list">
-              <li><span class="feature-check">✓</span> Kind, patient communicators</li>
-              <li><span class="feature-check">✓</span> High achievers from local schools</li>
-              <li><span class="feature-check">✓</span> Trained with lesson templates</li>
-            </ul>
+          <div class="card reveal" style="transition-delay:.05s">
+            <h3>Apply Now</h3>
+            <form id="applyForm" action="https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec" method="post">
+              <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+              <input id="fullName" name="fullName" placeholder="Full Name" required>
+              <input id="email" name="email" type="email" placeholder="Email" required>
+              <div class="grid grid-2">
+                <input id="phone" name="phone" placeholder="Phone">
+                <input id="school" name="school" placeholder="School">
+              </div>
+              <div class="grid grid-2">
+                <select id="grade" name="grade">
+                  <option value="">Grade</option>
+                  <option>9</option><option>10</option><option>11</option><option>12</option>
+                </select>
+                <select id="hours" name="hours">
+                  <option value="">Hours/week</option>
+                  <option>1–2</option><option>3–5</option><option>6–8</option><option>9+</option>
+                </select>
+              </div>
+              <textarea id="about" name="about" placeholder="Why do you want to tutor? (grades, achievements, interests)"></textarea>
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                <button class="btn primary" type="submit">Submit Application</button>
+                <span class="sub">We’ll reply within 48 hours.</span>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRICING & GUARANTEE -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <h2>Simple, Transparent Pricing</h2>
-        <p>No hidden fees, no contracts, no surprises. Just quality tutoring at an affordable price.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card pricing-card hover-lift reveal">
-          <div class="pill">🎓 Standard Plan • Any Subject</div>
-          <div class="price">
-            <span class="price-currency">$</span>20
-            <span class="price-period">CAD / hour</span>
-          </div>
-          <ul class="pricing-features">
-            <li><span class="check-icon">✓</span> 60‑minute 1‑on‑1 sessions</li>
-            <li><span class="check-icon">✓</span> Math & Science (Grades 4–10)</li>
-            <li><span class="check-icon">✓</span> Lesson notes & practice tasks</li>
-            <li><span class="check-icon">✓</span> Parent progress summaries</li>
-            <li><span class="check-icon">✓</span> In‑person (Aurora) or online</li>
-          </ul>
-          <div class="guarantee" id="guarantee">
-            <div class="guarantee-icon">✓</div>
-            <div><strong>Money‑Back Guarantee.</strong> Not happy after your first month? We'll refund you in full.</div>
-          </div>
-          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn primary" href="https://calendly.com/samyar-shafiee2009/30min" target="_blank">Book Free Consultation</a>
-            <a class="btn secondary" href="#faq">See FAQ</a>
-          </div>
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>FAQ</h2>
+          <p>Short, clear answers so you can decide quickly if Brain Buddies is right for your family.</p>
         </div>
-        <div class="card reveal" style="transition-delay:.05s">
-          <h3 style="font-family:'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;font-size:24px;font-weight:600;line-height:1.17;letter-spacing:-0.01em;margin-bottom:20px;color:var(--text)">What Parents Notice</h3>
-          <ul class="feature-list">
-            <li><span class="feature-dot"></span> Clear, patient explanations</li>
-            <li><span class="feature-dot"></span> Confidence and study habits</li>
-            <li><span class="feature-dot"></span> Flexible scheduling</li>
-            <li><span class="feature-dot"></span> Real exam prep—not busywork</li>
-            <li><span class="feature-dot"></span> Affordable & local</li>
-          </ul>
-          <div style="margin-top:24px;padding:20px;background:var(--border-light);border-radius:var(--radius);border-left:4px solid var(--accent)">
-            <p style="margin:0;font-style:italic;color:var(--text-secondary);font-size:17px;line-height:1.47059">"My math grade improved from 82% to 98%" - Highschool Student, Aurora</p>
+        <div class="faq">
+          <div class="card reveal">
+            <h3>Who are the tutors?</h3>
+            <p>Our tutors are top high school students in Aurora with strong grades in math and science and training in how to teach clearly.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.05s">
+            <h3>Where do sessions happen?</h3>
+            <p>In-person sessions take place at public spaces like Aurora libraries, or online via video—whichever is more convenient for your family.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.1s">
+            <h3>Can we pause anytime?</h3>
+            <p>Yes. There are no contracts or minimums. You’re fully in control of how often and how long you use Brain Buddies tutoring.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TUTOR APPLY -->
-  <section id="apply">
-    <div class="container">
-      <div class="section-header">
-        <h2>High School Tutors — Earn Volunteer Hours</h2>
-        <p>Join Brain Buddies to mentor younger students, build your resume, and collect verified volunteer hours.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <h3>Why join?</h3>
-          <ul class="list">
-            <li><span class="dot"></span> Verified volunteer hours (Aurora, ON)</li>
-            <li><span class="dot"></span> Teaching & leadership experience</li>
-            <li><span class="dot"></span> Training & ready‑made templates</li>
-            <li><span class="dot"></span> Flexible after‑school schedule</li>
-          </ul>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>Reach out and we’ll set up a short call to understand your child’s goals and schedule the first tutoring session.</p>
         </div>
-        <div class="card reveal" style="transition-delay:.05s">
-          <h3>Apply Now</h3>
-          <form id="applyForm" action="https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec" method="post">
-            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-            <input id="fullName" name="fullName" placeholder="Full Name" required>
-            <input id="email" name="email" type="email" placeholder="Email" required>
-            <div class="grid grid-2">
-              <input id="phone" name="phone" placeholder="Phone">
-              <input id="school" name="school" placeholder="School">
-            </div>
-            <div class="grid grid-2">
-              <select id="grade" name="grade">
-                <option value="">Grade</option>
-                <option>9</option><option>10</option><option>11</option><option>12</option>
-              </select>
-              <select id="hours" name="hours">
-                <option value="">Hours/week</option>
-                <option>1–2</option><option>3–5</option><option>6–8</option><option>9+</option>
-              </select>
-            </div>
-            <textarea id="about" name="about" placeholder="Why do you want to tutor? (grades, achievements, interests)"></textarea>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-              <button class="btn primary" type="submit">Submit Application</button>
-              <span class="sub">We’ll reply within 48 hours.</span>
-            </div>
-          </form>
+        <div class="contact-card">
+          <div class="card reveal">
+            <h3>Aurora, Ontario</h3>
+            <p class="sub">Serving the Aurora community with in-person math and science tutoring, plus online sessions across Ontario.</p>
+          </div>
+          <div class="card reveal" style="transition-delay:.05s">
+            <h3>Email</h3>
+            <p><a href="mailto:hello@brainbuddies.ca">support@brainbuddies.ca</a></p>
+          </div>
+          <div class="card reveal" style="transition-delay:.1s">
+            <h3>Phone</h3>
+            <p><a href="tel:+14168752746">(416) 875-2746</a></p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-header">
-        <h2>FAQ</h2>
-        <p>Short, clear answers so you can decide quickly.</p>
-      </div>
-      <div class="faq">
-        <div class="card reveal"><h3>Who are the tutors?</h3><p>Top high school students in Aurora with training in how to teach clearly.</p></div>
-        <div class="card reveal" style="transition-delay:.05s"><h3>Where do sessions happen?</h3><p>In‑person at public spaces (libraries) or online via video—your choice.</p></div>
-        <div class="card reveal" style="transition-delay:.1s"><h3>Can we pause anytime?</h3><p>Yes. No contracts or minimums. You’re fully in control.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header">
-        <h2>Contact</h2>
-        <p>Reach out and we’ll set up a short call to understand your goals and schedule the first session.</p>
-      </div>
-      <div class="contact-card">
-        <div class="card reveal"><h3>Aurora, Ontario</h3><p class="sub">Serving the Aurora community (in‑person & online).</p></div>
-        <div class="card reveal" style="transition-delay:.05s"><h3>Email</h3><p><a href="mailto:hello@brainbuddies.ca">support@brainbuddies.ca</a></p></div>
-        <div class="card reveal" style="transition-delay:.1s"><h3>Phone</h3><p><a href="tel:+12895550134">
-          (416) 875‑2746</a></p></div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="container">© <span id="year"></span> Brain Buddies, Aurora ON</div>
@@ -1147,14 +1278,61 @@
 
   <script>
     const allowed = ['https://brainbuddies.ca', 'https://<your-gh-pages>.github.io'];
+
     // Footer year
-    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Reveal animations
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
     },{threshold:0.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Navbar scroll style
+    const nav = document.querySelector('.nav');
+    const handleScroll = () => {
+      if (window.scrollY > 8) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    // Highlight active link on scroll (simple version)
+    const sections = ['how','features','pricing','apply','contact'].map(id => ({
+      id,
+      el: document.getElementById(id)
+    }));
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function updateActiveLink(){
+      let current = null;
+      const offset = 120;
+      sections.forEach(s=>{
+        if(!s.el) return;
+        const rect = s.el.getBoundingClientRect();
+        if(rect.top <= offset && rect.bottom >= offset){
+          current = s.id;
+        }
+      });
+      navLinks.forEach(link=>{
+        const href = link.getAttribute('href') || '';
+        const target = href.startsWith('#') ? href.slice(1) : href;
+        if(target === current){
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    updateActiveLink();
+    window.addEventListener('scroll', updateActiveLink);
 
     // Mobile drawer behavior
     const html = document.documentElement;
@@ -1162,95 +1340,87 @@
     const closeBtn = document.getElementById('closeBtn');
     const panel = document.getElementById('mobilePanel');
     const overlay = document.getElementById('overlay');
+
     function openMenu(){
       html.classList.add('mobile-open');
       panel.setAttribute('aria-hidden','false');
       menuBtn.setAttribute('aria-expanded','true');
-      overlay.hidden=false;
+      overlay.hidden = false;
     }
     function closeMenu(){
       html.classList.remove('mobile-open');
       panel.setAttribute('aria-hidden','true');
       menuBtn.setAttribute('aria-expanded','false');
-      overlay.hidden=true;
+      overlay.hidden = true;
     }
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (overlay) overlay.addEventListener('click', closeMenu);
     document.querySelectorAll('.mobile-links a').forEach(a=>a.addEventListener('click', closeMenu));
 
-    // Tutor form: basic validate + console log (no backend)
+    // Tutor form submit with reCAPTCHA
     const form = document.getElementById('applyForm');
     form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+      e.preventDefault();
 
-  const btn = form.querySelector('button[type="submit"]');
-  if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
 
-  try {
-    const fd = new FormData(form);
+      try {
+        const fd = new FormData(form);
 
-    await new Promise(resolve => grecaptcha.ready(resolve));
-    const token = await grecaptcha.execute('6Lel2uQrAAAAAICJEZd4GmUJfnFqT2B8PeXrJ7S8', { action: 'apply' });
-    fd.append('token', token);
+        await new Promise(resolve => grecaptcha.ready(resolve));
+        const token = await grecaptcha.execute('6Lel2uQrAAAAAICJEZd4GmUJfnFqT2B8PeXrJ7S8', { action: 'apply' });
+        fd.append('token', token);
 
-    // Keep no-cors, do NOT inspect the response (it's opaque).
-    await fetch('https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec', {
-      method: 'POST',
-      body: fd,
-      mode: 'no-cors'
+        await fetch('https://script.google.com/macros/s/AKfycbzC94geEThbr-Bj36uzrUxpf838qkAo8cobl-LPxJMOl4AJJ0TuM19LORYbwnyDla4x/exec', {
+          method: 'POST',
+          body: fd,
+          mode: 'no-cors'
+        });
+
+        alert("Thanks! Your application was received. We'll email you within 48 hours.");
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        alert('Sorry, there was an error. Please try again.');
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit Application'; }
+      }
     });
 
-    // Single success path
-    alert("Thanks! Your application was received. We'll email you within 48 hours.");
-    form.reset();
-  } catch (err) {
-    console.error(err);
-    alert('Sorry, there was an error. Please try again.');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'Submit Application'; }
-  }
-});
-    // Smoke Tests (non-intrusive)
-    // ------------------------------
+    // Smoke Tests (non-intrusive, only on localhost)
     if (location.hostname === 'localhost') {
-  (function runSmokeTests(){ 
-      try{
-        console.group('Brain Buddies — Smoke Tests');
-        // Test 1: Elements exist
-        console.assert(!!document.getElementById('menuBtn'), 'Menu button missing');
-        console.assert(!!document.getElementById('mobilePanel'), 'Mobile panel missing');
-        console.assert(!!document.getElementById('overlay'), 'Overlay missing');
-        console.assert(!!document.getElementById('applyForm'), 'Apply form missing');
+      (function runSmokeTests(){
+        try{
+          console.group('Brain Buddies — Smoke Tests');
+          console.assert(!!document.getElementById('menuBtn'), 'Menu button missing');
+          console.assert(!!document.getElementById('mobilePanel'), 'Mobile panel missing');
+          console.assert(!!document.getElementById('overlay'), 'Overlay missing');
+          console.assert(!!document.getElementById('applyForm'), 'Apply form missing');
 
-        // Test 2: Menu open/close toggles classes & attributes
-        openMenu();
-        console.assert(document.documentElement.classList.contains('mobile-open'), 'Menu did not open');
-        console.assert(document.getElementById('overlay').hidden === false, 'Overlay not shown on open');
-        closeMenu();
-        console.assert(!document.documentElement.classList.contains('mobile-open'), 'Menu did not close');
-        console.assert(document.getElementById('overlay').hidden === true, 'Overlay not hidden on close');
+          openMenu();
+          console.assert(document.documentElement.classList.contains('mobile-open'), 'Menu did not open');
+          console.assert(document.getElementById('overlay').hidden === false, 'Overlay not shown on open');
+          closeMenu();
+          console.assert(!document.documentElement.classList.contains('mobile-open'), 'Menu did not close');
+          console.assert(document.getElementById('overlay').hidden === true, 'Overlay not hidden on close');
 
-        // Test 3: Form handler runs (stub alert to avoid popup)
-        const _oldAlert = window.alert;
-        window.alert = (msg)=>console.info('ALERT (stubbed):', msg);
-        const testForm = document.getElementById('applyForm');
-        if(testForm){
-          const fd = new FormData();
-          fd.set('fullName','Test User');
-          fd.set('email','test@example.com');
-          // Populate the form elements to mimic user input
-          testForm.querySelector('#fullName').value = 'Test User';
-          testForm.querySelector('#email').value = 'test@example.com';
-          testForm.dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));
+          const _oldAlert = window.alert;
+          window.alert = (msg)=>console.info('ALERT (stubbed):', msg);
+          const testForm = document.getElementById('applyForm');
+          if(testForm){
+            testForm.querySelector('#fullName').value = 'Test User';
+            testForm.querySelector('#email').value = 'test@example.com';
+            testForm.dispatchEvent(new Event('submit', {cancelable:true, bubbles:true}));
+          }
+          window.alert = _oldAlert;
+          console.groupEnd();
+        } catch(err){
+          console.error('Smoke tests failed:', err);
         }
-        window.alert = _oldAlert;
-        console.groupEnd();
-      }catch(err){
-        console.error('Smoke tests failed:', err);
-      }
-    })();
-}
+      })();
+    }
   </script>
 </body>
 </html>
