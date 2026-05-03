@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /outputs/
+Disallow: /scripts/
+
+Sitemap: https://brainbuddies.ca/sitemap.xml
